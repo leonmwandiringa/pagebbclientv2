@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" href="https://assets.xbox.com/xbcservicewebwww-1805-23141-0-0-main-rolling/shell/images/favicon.ico">
+    <title>Builder</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dragula.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/sweetalert.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+
+    <style>
+        .profiletimeline{
+            margin: 30px 50px;
+        }
+    </style>
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            
+                            <!-- Light Logo icon -->
+                            <!-- <img src="assets/images/gennielogo2.png" style="width: 40px;" alt="homepage" class="light-logo" /> -->
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         
+                         <!-- Light Logo text   
+                          <img src="assets/images/gennielogo2.png" class="light-logo img-responsive" style="width: 40px;" alt="homepage" /></span> </a> */ --> 
+                </div>
+
+                <div class="navbar-collapse">
+
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+
+                        
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav my-lg-0">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle has-arrow waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">user<span class="caret"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+         
+
+        <div class="page-wrapper" style="">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12" id="dragtocontainer" style="margin-top: 40px;height: 100vh;">
+
+
+
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs profile-tab" role="tablist">
+                                    <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#home" role="tab" aria-selected="true">Sites</a> </li>
+                                    <!--<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Profile</a> </li>-->
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-selected="false">Pages</a> </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active show" id="home" role="tabpanel">
+                                        <div class="card-body">
+                                            <div style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 20px;">
+                                                <p class="text-left" style="display: inline-block;margin: 30px">Sites: <span id="sitesCount"></span></p>
+                                                <a href="#" class="btn btn-md btn-success" style="margin: 30px;display: inline-block;float:right"> Create Site</a>
+                                            </div>
+                                            <div class="profiletimeline">
+                                                
+                                                <div class="sl-item" style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 30px;">
+                                                    <div class="sl-right">
+                                                        <div>
+                                                            <h3 class="m-t-10"> fdsfdsfsdr </h3>
+                                                            <span style="float: right;font-size: 20px;">Created: <span class="">nam</span></span>
+                                                            <p><span style="font-size: 20px">Author: <span class="">nam</span></span></p>
+                                                            
+                                        
+                                                            <p><span style="font-size: 20px">Framework: <span class="">namcfd</span></span></p>
+                                                        </div>
+                                                        <div class="like-comm m-t-20"> 
+                                                            <div><a href="#" class="btn btn-info"> Edit</a>
+                                                                <a href="#" class="btn btn-danger"> Delete</a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                        <div class="tab-pane" id="settings" role="tabpanel">
+                                        <div class="card-body">
+                                            <form class="form-horizontal form-material">
+                                                <div class="form-group">
+                                                    <label class="col-md-12">Full Name</label>
+                                                    <div class="col-md-12">
+                                                        <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-email" class="col-md-12">Email</label>
+                                                    <div class="col-md-12">
+                                                        <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12">Password</label>
+                                                    <div class="col-md-12">
+                                                        <input type="password" value="password" class="form-control form-control-line">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12">Phone No</label>
+                                                    <div class="col-md-12">
+                                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-12">Message</label>
+                                                    <div class="col-md-12">
+                                                        <textarea rows="5" class="form-control form-control-line"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-12">Select Country</label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control form-control-line">
+                                                            <option>London</option>
+                                                            <option>India</option>
+                                                            <option>Usa</option>
+                                                            <option>Canada</option>
+                                                            <option>Thailand</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <button class="btn btn-success">Update Profile</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            
+                
+        </div>
+
+
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/dragula.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            $(".preloader").show();
+
+            (()=>{
+                getAllsites();
+            })();
+
+            function getAllsites(){
+
+                $.ajax({
+                    method: 'GET',
+                    url: 'http://localhost:3000/website',
+                    success: (data)=>{
+                        console.log(data);
+                        displayAllsites(data.resp);
+                        $(".preloader").fadeOut(500);
+                    },
+                    error: (err)=>{
+                        console.log(err);
+                    }
+                })
+
+            }
+
+            function displayAllsites(sites){
+
+                $("#sitesCount").text(sites.length);
+
+                let listHtml = '';
+
+                for(let site in sites){
+                    console.log(sites[site]);
+                }
+
+            }
+        });
+    </script>
+    <script src="js/sweetalert.min.js"></script>
+</body>
+
+</html>
