@@ -112,28 +112,11 @@
                                         <div class="card-body">
                                             <div style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 20px;">
                                                 <p class="text-left" style="display: inline-block;margin: 30px">Sites: <span id="sitesCount"></span></p>
-                                                <a href="#" class="btn btn-md btn-success" style="margin: 30px;display: inline-block;float:right"> Create Site</a>
+                                                <a href="#createWebsite" class="btn btn-md btn-success" data-toggle="modal" style="margin: 30px;display: inline-block;float:right"> Create Site</a>
                                             </div>
                                             <div class="profiletimeline">
                                                 
-                                                <div class="sl-item" style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 30px;">
-                                                    <div class="sl-right">
-                                                        <div>
-                                                            <h3 class="m-t-10"> fdsfdsfsdr </h3>
-                                                            <span style="float: right;font-size: 20px;">Created: <span class="">nam</span></span>
-                                                            <p><span style="font-size: 20px">Author: <span class="">nam</span></span></p>
-                                                            
-                                        
-                                                            <p><span style="font-size: 20px">Framework: <span class="">namcfd</span></span></p>
-                                                        </div>
-                                                        <div class="like-comm m-t-20"> 
-                                                            <div><a href="#" class="btn btn-info"> Edit</a>
-                                                                <a href="#" class="btn btn-danger"> Delete</a>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
 
                                             </div>
                                         </div>
@@ -214,6 +197,81 @@
 
 
 
+
+
+
+        <!--      modal    -->
+        <div class="modal fade show" tabindex="-1" id="createWebsite" role="dialog" aria-labelledby="modal" style="padding-right: 16px;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Create a website</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                            <form class="createuser">
+                                    <div class="form-body">
+
+                                        <div class="row p-t-20">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">Title</label>
+                                                    <input type="text" id="websitetitle" class="form-control" placeholder="" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--/row-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Framework</label>
+                                                    <select class="form-control custom-select" name="role" id="role" required>
+                                                        <option value="">Select a Framework</option>
+                                                        <option value="Bootstrap4">Bootstrap 4</option>
+                                                        <option value="Bootstrap3">Bootstrap 3</option>
+                                                        <option value="MWF">Microsoft Web Framework</option>
+                                                        <option value="Materialize">Materialize</option>
+                                                        <option value="Foundation">Foundation</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Status</label>
+                                                    <select class="form-control custom-select" name="role" id="role" required>
+                                                        
+                                                        <option value="PREVIEW" selected>PREVIEW</option>
+                                                        <option value="LIVE">LIVE</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success btn-lg"> <i class="fa fa-check"></i> Submit</button>
+                                    </div>
+                                </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+    </div>
+    <!--      -->
+
+
+
+
+
+
+
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -270,9 +328,104 @@
 
                 for(let site in sites){
                     console.log(sites[site]);
+                    listHtml += `<div class="sl-item" style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 30px;">
+                                                    <div class="sl-right">
+                                                        <div>
+                                                            <h3 class="m-t-10"> ${sites[site].title} </h3>
+                                                            <span class="badge badge-success" style="position: absolute;top:0;right:0">${sites[site].status}</span>
+                                                            <p style=""><span style="float: right;font-size: 20px;">Created: <span class="">${sites[site].createdAt}</span></span>
+                                                            <span style="font-size: 20px">Author: <span class="">${sites[site].author}</span></span></p>
+                                                            <p style="display: inline-block"><span style="font-size: 20px">Pages: <span class="">${sites[site].pages}</span></span></p>
+                                        
+                                                            <p style="float: right;display: inline-block"><span style="font-size: 20px">Framework: <span class="">${sites[site].framework}</span></span></p>
+                                                            
+                                                        </div>
+                                                        <div class="like-comm m-t-20"> 
+                                                            <div><a href="#" class="btn btn-info editthisWebsite" data-edit="${sites[site]._id}"> Edit</a>
+                                                                <a href="#" class="btn btn-danger deletethiswebsite" data-delete="${sites[site]._id}"> Delete</a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>`
                 }
+                
+                
+
+                setTimeout(()=>{
+                    $(".profiletimeline").empty().append(listHtml);
+                    $(".editthisWebsite").click(EditThisWebsite);
+                    $(".deletethiswebsite").click(deleteThisWebsite);
+                }, 0);
 
             }
+
+            //delete website
+            function deleteThisWebsite(){
+
+                let id = $(this).data("delete").trim();
+
+                return simpleCrudOp("DELETE", id, "website");
+
+            }
+
+            function EditThisWebsite(){
+
+
+            }
+
+            //run certain crup ops
+            function simpleCrudOp(method, id, type){
+                let urlTogo;
+                if(type == 'website'){
+                    urlTogo = "http://localhost:3000/website";
+                }else{
+                    urlTogo = "http://localhost:3000/page";
+                }
+
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Remove!'
+                    }, (result) => {
+                    if (result) {
+
+                        return runAjax(method, urlTogo, id);
+
+                    }
+                });
+
+
+            }
+
+            function runAjax(prsdmethod, urlTogo, id){
+
+                $.ajax({
+                    method: prsdmethod,
+                    url: `${urlTogo}/${id}`,
+                    success: (data)=>{
+                        console.log(data);
+                        let srresp = data.resp == null ? data.message : data.message+" "+JSON.stringify(data.resp); 
+                            swal(
+                                data.notice,
+                                srresp,
+                                data.notice,
+                            )
+
+                        getAllsites();
+                    },
+                    error: (err)=>{
+                        console.log(err);
+                    }
+
+                    });
+                }
+
+            
         });
     </script>
     <script src="js/sweetalert.min.js"></script>
