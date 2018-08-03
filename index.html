@@ -209,7 +209,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                            <form class="createuser">
+                            <form class="createthewebsite">
                                     <div class="form-body">
 
                                         <div class="row p-t-20">
@@ -226,7 +226,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Framework</label>
-                                                    <select class="form-control custom-select" name="role" id="role" required>
+                                                    <select class="form-control custom-select" name="framework" id="framework" required>
                                                         <option value="">Select a Framework</option>
                                                         <option value="Bootstrap4">Bootstrap 4</option>
                                                         <option value="Bootstrap3">Bootstrap 3</option>
@@ -239,7 +239,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Status</label>
-                                                    <select class="form-control custom-select" name="role" id="role" required>
+                                                    <select class="form-control custom-select" name="status" id="status" required>
                                                         
                                                         <option value="PREVIEW" selected>PREVIEW</option>
                                                         <option value="LIVE">LIVE</option>
@@ -302,7 +302,9 @@
             (()=>{
                 getAllsites();
             })();
+            
 
+            $(".createthewebsite").submit(createWebsite);
             function getAllsites(){
 
                 $.ajax({
@@ -329,7 +331,7 @@
                 for(let site in sites){
                     console.log(sites[site]);
                     listHtml += `<div class="sl-item" style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 30px;">
-                                                    <div class="sl-right">
+                                                    <div class="sl-right" style="position: relative">
                                                         <div>
                                                             <h3 class="m-t-10"> ${sites[site].title} </h3>
                                                             <span class="badge badge-success" style="position: absolute;top:0;right:0">${sites[site].status}</span>
@@ -409,7 +411,7 @@
                     url: `${urlTogo}/${id}`,
                     success: (data)=>{
                         console.log(data);
-                        let srresp = data.resp == null ? data.message : data.message+" "+JSON.stringify(data.resp); 
+                        let srresp = data.resp == null ? data.message : data.message; 
                             swal(
                                 data.notice,
                                 srresp,
@@ -423,7 +425,36 @@
                     }
 
                     });
+            }
+
+            function createWebsite(e){
+
+                e.preventDefault();
+
+                let webbsiteName = escape($("#websitetitle").val().toString().trim());
+                let frameworkToUse = escape($("#framework").val().toString().trim());
+                let websiteStatus = escape($("#status").val().toString().trim());
+                
+                if(webbsiteName, websiteStatus, frameworkToUse){
+
+                    $.ajax({
+                        method: "POST",
+                        url: "http://localhost:3000/website",
+                        data: {title: webbsiteName, framework: frameworkToUse, status: websiteStatus},
+                        success: (data)=>{
+                            console.log(data);
+                            swal(
+                                data.notice,
+                                data.message,
+                                data.notice.toLowerCase()
+                            );
+                            getAllsites();
+                        }
+                    });
+
                 }
+
+            }
 
             
         });
