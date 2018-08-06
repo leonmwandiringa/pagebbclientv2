@@ -114,7 +114,7 @@
                                                 <p class="text-left" style="display: inline-block;margin: 30px">Sites: <span id="sitesCount"></span></p>
                                                 <a href="#createWebsite" class="btn btn-md btn-success" data-toggle="modal" style="margin: 30px;display: inline-block;float:right"> Create Site</a>
                                             </div>
-                                            <div class="profiletimeline">
+                                            <div class="profiletimeline UserCurrentPages">
                                                 
                                                 
 
@@ -124,55 +124,15 @@
                                     </div>
                                         <div class="tab-pane" id="settings" role="tabpanel">
                                         <div class="card-body">
-                                            <form class="form-horizontal form-material">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Full Name</label>
-                                                    <div class="col-md-12">
-                                                        <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="example-email" class="col-md-12">Email</label>
-                                                    <div class="col-md-12">
-                                                        <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Password</label>
-                                                    <div class="col-md-12">
-                                                        <input type="password" value="password" class="form-control form-control-line">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Phone No</label>
-                                                    <div class="col-md-12">
-                                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Message</label>
-                                                    <div class="col-md-12">
-                                                        <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-12">Select Country</label>
-                                                    <div class="col-sm-12">
-                                                        <select class="form-control form-control-line">
-                                                            <option>London</option>
-                                                            <option>India</option>
-                                                            <option>Usa</option>
-                                                            <option>Canada</option>
-                                                            <option>Thailand</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12">
-                                                        <button class="btn btn-success">Update Profile</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <div style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 20px;">
+                                                <p class="text-left" style="display: inline-block;margin: 30px">Pages: <span id="sitesCount"></span></p>
+                                                <a href="javascript:void(0)" class="btn btn-md btn-success" id="createPage" data-toggle="modal" style="margin: 30px;display: inline-block;float:right"> Create Page</a>
+                                            </div>
+                                            <div class="profiletimeline">
+                                                
+                                                
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -305,6 +265,9 @@
             
 
             $(".createthewebsite").submit(createWebsite);
+            $("#createPage").click(()=>{
+                window.location.assign("./home.html?create");
+            });
             function getAllsites(){
 
                 $.ajax({
@@ -330,11 +293,12 @@
 
                 for(let site in sites){
                     console.log(sites[site]);
+                    let StateClass = sites[site].status == "PREVIEW" ? "badge-warning" : "badge-success";
                     listHtml += `<div class="sl-item" style="border-bottom: 1px solid rgba(128, 128, 128, 0.22);padding-bottom: 30px;">
                                                     <div class="sl-right" style="position: relative">
                                                         <div>
                                                             <h3 class="m-t-10"> ${sites[site].title} </h3>
-                                                            <span class="badge badge-success" style="position: absolute;top:0;right:0">${sites[site].status}</span>
+                                                            <span class="badge ${StateClass}" style="position: absolute;top:0;right:0">${sites[site].status}</span>
                                                             <p style=""><span style="float: right;font-size: 20px;">Created: <span class="">${sites[site].createdAt}</span></span>
                                                             <span style="font-size: 20px">Author: <span class="">${sites[site].author}</span></span></p>
                                                             <p style="display: inline-block"><span style="font-size: 20px">Pages: <span class="">${sites[site].pages}</span></span></p>
@@ -355,7 +319,7 @@
                 
 
                 setTimeout(()=>{
-                    $(".profiletimeline").empty().append(listHtml);
+                    $(".UserCurrentPages").empty().append(listHtml);
                     $(".editthisWebsite").click(EditThisWebsite);
                     $(".deletethiswebsite").click(deleteThisWebsite);
                 }, 0);
@@ -449,6 +413,7 @@
                                 data.notice.toLowerCase()
                             );
                             getAllsites();
+                            $("#createWebsite .close").trigger("click");
                         }
                     });
 
